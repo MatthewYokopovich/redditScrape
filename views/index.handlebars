@@ -1,0 +1,20 @@
+<div class="container-fluid">
+<h3>Reddit Scraper</h3><br>
+{{#each Articles}}
+    <div class="row border border-primary">
+        <div class="col-3">
+        {{#if imglink}}
+       
+        <img src="{{imglink}}" alt="Article Image" class="img-fluid">
+        {{/if}}
+         </div>
+         <div class="col-6">
+        <a href="{{bodylink}}"><p class="text-center">{{title}}</p></a><br>
+        <p>{{bodytext}}</p>
+        </div>
+        <div class="col-3">
+        <button type="button" class="btn btn-primary float-right">Comments</button>
+        </div>
+    </div>
+{{/each}}
+</div>

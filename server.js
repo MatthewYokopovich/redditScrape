@@ -18,7 +18,7 @@ app.engine(
 );
 app.set("view engine", "handlebars");
 
-require("./routing.js")(app);
+require("./routing.js")(app, db);
 
 app.listen(PORT, function() {
     console.log("App running on port http://localhost:" + PORT);
