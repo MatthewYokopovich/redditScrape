@@ -8,7 +8,8 @@ app.use(express.json());
 // Make public a static folder
 app.use(express.static("public"));
 var PORT = 3000;
-mongoose.connect("mongodb://localhost/redditscraper", { useNewUrlParser: true });
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/redditscraper"
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 app.set("views", "./views");
 app.engine(
   "handlebars",
