@@ -39,4 +39,37 @@ module.exports = (app, db) => {
               
         });
     })
+    app.post("/submit", (req, res) =>{
+        var articleID = req.body.articleID;
+        db.Comment.create({
+            body: req.body.body
+        }).then(dbComment =>{
+            return db.Article.findOneAndUpdate({
+                _id: articleID
+            }, {
+                $push: {
+                    comments: dbComment._id
+                }
+            });
+        })
+    })
+    app.get("/:id", (req, res) =>{
+        var idtoget = req.params.id;
+        console.log(idtoget);
+        db.Article.find({
+            _id: idtoget
+        }).populate("comments")
+        .then(dbArt =>{
+            return res.send(dbArt);
+        })
+    })
+    app.delete("/delete/:id", (req, res) =>{
+        var idtodel = req.params.id;
+        db.Comment.findOneAndRemove({
+            _id: idtodel
+        }, function(err, com){
+            res.send("success");
+        })
+        res.send("success");
+    })
 }

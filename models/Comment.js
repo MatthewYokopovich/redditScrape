@@ -2,7 +2,6 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 var CommentSchema = new Schema({
     // `title` must be of type String
-    title: String,
     // `body` must be of type String
     body: String
   });
