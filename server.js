@@ -9,7 +9,7 @@ app.use(express.json());
 app.use(express.static("public"));
 var PORT = 3000;
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/redditscraper"
-mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
+mongoose.connect(MONGODB_URI);
 app.set("views", "./views");
 app.engine(
   "handlebars",
